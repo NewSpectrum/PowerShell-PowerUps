@@ -1,0 +1,22 @@
+services:
+  PS-Ubuntu:
+    image: "mcr.microsoft.com/powershell/test-deps:lts-ubuntu-22.04"
+    container_name: "PS-Ubuntu"
+    hostname: "PS-Ubuntu"
+    build:
+      context: ".\\.devcontainer"
+      dockerfile: "Dockerfile"
+    network:
+      - admin
+    ports:
+      - 22
+      - 80
+      - 443
+
+  PS-WinServ:
+    image: "mcr.microsoft.com/windows/servercore:lts2022"
+    container_name: "PS-WinServ"
+    hostname: "PS-WinServ"
+    build:
+      context: ".\\.devcontainer"
+      dockerfile: "Dockerfile"
