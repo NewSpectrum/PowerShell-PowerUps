@@ -2,6 +2,15 @@ function New-AdvFunction {
 	[CmdletBinding]
 	param(
 		[Parameter(Mandatory=$False,
+				   ParameterSetName="Defaults",
+				   ValueFromPipeline=$False,
+   				   ValueFromPipelineByPropertyName=$False)]
+		[Alias("D","Defaults")]
+		[switch]$DefaultSettings
+	)
+	
+	param(
+		[Parameter(Mandatory=$False,
 		           Position=0,
 				   ParameterSetName="Defaults",
 				   ValueFromPipeline=$True,
@@ -35,10 +44,17 @@ function New-AdvFunction {
 			"Description"
 		)
 		
+		if ( "$DefaultSettings" -eq $True ) {
+			$SortBy="Verb"
+			$Property="AliasPrefix, Verb, Description"
+			
+		}
+		
+		
 		if ( "$SortBy" -ne $null ) {
-			if ( "${SortOptions}" -not -contains "$SortBy" ) {
+			if ( "$SortOptions" -not -contains "$SortBy" ) {
 				throw "Unrecognized 'SortBy' input."
-				Write-Host "`n`t`e[1;38;5;153m Test `n`e[0m"
+				#Write-Host "`n`t`e[1;38;5;153m Test `n`e[0m"
 			}
 		} elseif ( "$SortBy" -eq $null ) {
 			$SortBy = "Verb"
@@ -48,9 +64,12 @@ function New-AdvFunction {
 	
 	#★ Main Process Block
 	process {
-		Get-Verb -Verb "${Verb}" | 
-		Sort-Object -Property "${SortBy}" | 
-		Format-Table -Wrap -AutoSize -Property Verb, AliasPrefix, Description
+		$Verbs = [PSCustomObject]@{
+			Get-Verb -Verb "${Verb}" | Sort-Object -Property "${SortBy}"
+		}
+		
+		$Verbs | Format-Table -Wrap -AutoSize @{ Label="Alias"; Expression={$_.AliasPrefix} }
+		
 	}
 	
 	#★ End Process Block
@@ -61,8 +80,8 @@ function New-AdvFunction {
 			#? Try/Catch/Finally (or additional steps from the main)
 	}
 
-
-
+# get-process | Format-Table @{L=’name’;E={$_.processname}}, id
+# <!-- ★ Default Settings -->
 <#
 .SYNOPSIS
 	One-Sentence Summary.
@@ -119,4 +138,5 @@ function New-AdvFunction {
 #>
 }
 
-
+Get-FormatData -TypeName System.Globalization.CultureInfo |
+Export-FormatData -Path $HOME\Format\CultureInfo.Format.ps1xml
