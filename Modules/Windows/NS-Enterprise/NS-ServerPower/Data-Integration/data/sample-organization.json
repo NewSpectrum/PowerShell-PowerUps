@@ -1,0 +1,52 @@
+{
+	"UUID": "039a02c7-c201-426e-a711-15530d76d9d2",
+	"oranization name": "New Spectrum",
+	"prefix": "NS",
+	"primary contact": {
+		"phone": {
+			"country code": 1,
+			"main line": "(800) 555-1234"
+		},
+		"email": {
+			"main inbox": "info@nsd.team",
+			"support inbox": "support@nsd.team",
+			"additional": [
+				"sales@nsd.team"
+			]
+		},
+		"online": {
+			"homepage": "https://company.com/"
+		}
+	},
+	"main location": {
+		"location name": "HQ",
+		"address": {
+			"street number": 62,
+			"street name": "Swartswood Road",
+			"street 2": {
+				"building": null,
+				"floor": null,
+				"office": null,
+				"apartment": null,
+				"custom": null,
+			},
+			"state/region": "New Jersey",
+			"country": "United States",
+			"postal code": "07860"
+		}
+	},
+	"domains": {
+		"primary domain": {
+			"domain name": "nsd.team",
+			"web-domain": true,
+			"domain provider": "Google",
+			"connections": {
+				"DNS controller": false,
+				"Azure Active Directory": false,
+				"Google Workspace": false,
+				"mail services": true,
+				"mail provider": "Exchange Online"
+			}
+		},
+	},
+}
