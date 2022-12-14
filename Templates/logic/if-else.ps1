@@ -24,3 +24,6 @@
 	} elseif ( "$TempVar01" -eq "$Condition02" ) {
 		# Action
 	}
+	
+	
+	# [io.file]::OpenWrite($OutFile).close()
