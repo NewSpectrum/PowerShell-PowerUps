@@ -1,0 +1,1 @@
+FROM "mcr.microsoft.com/windows/servercore:lts2022" AS servercore

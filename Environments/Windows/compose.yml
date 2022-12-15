@@ -1,0 +1,11 @@
+services:
+  WinServ:
+    container_name: "PS-WinServ"
+    hostname: "WinServ"
+    privileged: true
+    build:
+      context: "./PS-ServerCore/.docker"
+      dockerfile: "servercore.dockerfile"
+    ports:
+      - 22
+    
