@@ -4,7 +4,7 @@
 function New-SymLink {
 	[CmdletBinding()]
 	param(
-		[Parameter(Mandatory=$True,
+		[Parameter(Mandatory=$False,
 		           Position=0,
 				   HelpMessage="The name of the Symbolic (aka 'Soft') Link.",
 				   ParameterSetName="Defaults",
@@ -13,6 +13,15 @@ function New-SymLink {
 		[Alias("Link","L","Name")]
 		[string]$LinkName,
 		
+		[Parameter(Mandatory=$False,
+		           Position=0,
+				   HelpMessage="The name of the Symbolic (aka 'Soft') Link.",
+				   ParameterSetName="Defaults",
+				   ValueFromPipeline=$True,
+				   ValueFromPipelineByPropertyName=$True)]
+		[Alias("Path","P","Location")]
+		[string]$LinkPath,
+		
 		[Parameter(Mandatory=$True,
 		           Position=0,
 				   HelpMessage="The name of the Symbolic (aka 'Soft') Link.",
@@ -20,7 +29,7 @@ function New-SymLink {
 				   ValueFromPipeline=$True,
 				   ValueFromPipelineByPropertyName=$True)]
 		[ValidateNotNullOrEmpty()]
-		[Alias("Target","T","Path")]
+		[Alias("Target","T","Value")]
 		[string]$TargetPath
 	)
 	
@@ -37,7 +46,7 @@ function New-SymLink {
 	
 	
 	process {
-		#
+		New-Item -ItemType 'SymbolicLink' -Name "${LinkName}" -Path "${LinkPath}" -Value "${TargetPath}"
 	}
 	
 	

@@ -34,14 +34,14 @@ Set-Variable <#
 
 
 $Properties	= [PSCustomObject]@{}
-$Test		= $( Get-ChildItem -Path ".\*" )
+$Test		= $( Get-Item -Path ".\Netflix & Daddy.gif" -Force )
 
 
 
 Set-Location -PassThru -Path "${GpDir}"
-$Tests | Get-Member |
-	Tee-Object -Append -Variable "${Properties[@]}"
-#
+$Test | Get-Member -MemberType 'NoteProperty', 'Property', 'PropertySet' -OutVariable +'Properties'
+	
+# Tee-Object -Append -Variable "${Properties[@]}"
 
 
 
@@ -53,11 +53,5 @@ $Tests | Get-Member |
 <#
 #>
 
-
-<#
-$Properties = $(
-	$Test | Get~Member
-)
-#>
 
 #-PassThru
