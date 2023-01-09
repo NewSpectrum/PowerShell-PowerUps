@@ -1,0 +1,17 @@
+System.Management.Automation.CmdletInvocationException: Access to the path 'C:\Program Files\PowerShell\7\powershell.config.json' is denied.
+To change the execution policy for the default (LocalMachine) scope, start PowerShell with the "Run as administrator" option. To change the execution policy for the current user, run "Set-ExecutionPolicy -Scope CurrentUser".
+
+---> System.UnauthorizedAccessException:
+Access to the path 'C:\Program Files\PowerShell\7\powershell.config.json' is denied.
+	at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+	at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+	at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+	at System.Management.Automation.Configuration.PowerShellConfig.OpenFileStreamWithRetry(String fullPath, FileMode mode, FileAccess access, FileShare share)
+	at System.Management.Automation.Configuration.PowerShellConfig.UpdateValueInFile[T](ConfigScope scope, String key, T value, Boolean addValue)
+	at System.Management.Automation.Internal.SecuritySupport.SetExecutionPolicy(ExecutionPolicyScope scope, ExecutionPolicy policy, String shellId)
+	at Microsoft.PowerShell.Commands.SetExecutionPolicyCommand.ProcessRecord()
+--- End of inner exception stack trace ---
+at System.Management.Automation.Internal.PipelineProcessor.SynchronousExecuteEnumerate(Object input)
+at System.Management.Automation.PipelineOps.InvokePipeline(Object input, Boolean ignoreInput, CommandParameterInternal[][] pipeElements, CommandBaseAst[] pipeElementAsts, CommandRedirection[][] commandRedirections, FunctionContext funcContext)
+at System.Management.Automation.Interpreter.ActionCallInstruction`6.Run(InterpretedFrame frame)
+at System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)
